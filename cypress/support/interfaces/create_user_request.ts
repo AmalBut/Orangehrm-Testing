@@ -1,4 +1,4 @@
-export interface CreateUserRequest {
+export interface CreateNewUserRequest {
   name: string;
   job: string;
 }

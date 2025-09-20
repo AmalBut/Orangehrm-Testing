@@ -24,6 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+import { CreateNewUserRequest } from "./interfaces/create_user_request";
 import { loginPage } from "./pages/login-page";
 
 declare global {
@@ -33,7 +34,7 @@ declare global {
       createUserApi<T>(
         method: string,
         url: string,
-        body: object,
+        body: CreateNewUserRequest,
         headers: { [key: string]: string }
       ): Chainable<Cypress.Response<any>>;
     }
@@ -48,7 +49,7 @@ Cypress.Commands.add("login", (username: string, password: string) => {
 });
 
 Cypress.Commands.add(
-  "createUserApi",<T> (method: string, url: string, body:object, headers: { [key: string]: string }) => {
+  "createUserApi",<T> (method: string, url: string, body:CreateNewUserRequest, headers: { [key: string]: string }) => {
     return cy.request({
       method,
       url,
